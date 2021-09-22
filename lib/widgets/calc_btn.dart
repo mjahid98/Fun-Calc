@@ -1,17 +1,17 @@
-import 'dart:html';
-
 import 'package:flutter/material.dart';
 
 class CalcButton extends StatelessWidget {
   final String btnText;
   final Color bgColor;
   final Color textColor;
+  final Function callback;
   // var lightPurple50 = const Color(0x80DCBAFF);
   const CalcButton(
       {Key? key,
       required this.btnText, // non-nullable and required
       required this.bgColor, // non-nullable but optional with a default value
-      required this.textColor // non-nullable but optional with a default value
+      required this.textColor,
+      required this.callback // non-nullable but optional with a default value
       })
       : super(key: key);
 
@@ -35,11 +35,13 @@ class CalcButton extends StatelessWidget {
       ),
       child: GestureDetector(
         onTap: () {
-          btnText == 'AC'
-              ? print('Cleared')
-              : btnText == '%'
-                  ? print('Percentage')
-                  : print(btnText);
+          callback(btnText);
+
+          // btnText == 'AC'
+          //     ? print('Cleared')
+          //     : btnText == '%'
+          //         ? print('Percentage')
+          //         : print(btnText);
         },
         child: Container(
           // margin:
@@ -65,11 +67,13 @@ class CalcButton extends StatelessWidget {
 class CalcIconButton extends StatelessWidget {
   final String btnIcon;
   final Color bgColor;
+  final Function callback;
   // var lightPurple50 = const Color(0x80DCBAFF);
   const CalcIconButton({
     Key? key,
     required this.btnIcon,
     required this.bgColor,
+    required this.callback
   }) : super(key: key);
 
   // const CalcButton({required this.btnText, required this.style = ''});
@@ -92,12 +96,16 @@ class CalcIconButton extends StatelessWidget {
       ),
       child: GestureDetector(
         onTap: () {
-          if (btnIcon == 'assets/images/backspace-icon.png') {
-            print('backspace');
-          } else {
-            print('square root');
-          }
-        },
+          callback(btnIcon);
+        }
+        //  () {
+        //   if (btnIcon == 'assets/images/backspace-icon.png') {
+        //     print('backspace');
+        //   } else {
+        //     print('square root');
+        //   }
+        // }
+        ,
         child: Container(
           // margin:
           height: 56,

@@ -3,8 +3,13 @@ import 'package:flutter/material.dart';
 class CalcBoxedButton extends StatelessWidget {
   final String btnText;
   final double btnTextPaddingTop;
+  final Function callback;
 
-  const CalcBoxedButton({required this.btnText, this.btnTextPaddingTop = 15});
+  const CalcBoxedButton(
+      {required this.btnText,
+      this.btnTextPaddingTop = 15,
+      required this.callback // non-nullable but optional with a default value
+      });
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +23,8 @@ class CalcBoxedButton extends StatelessWidget {
 
     return GestureDetector(
       onTap: () {
-        btnText == 'x' ? print('*') : print(btnText);
+        callback(btnText);
+        // btnText == 'x' ? print('*') : print(btnText);
       },
       child: Container(
         // margin:
@@ -48,8 +54,12 @@ class CalcBoxedButton extends StatelessWidget {
 
 class CalcBoxedEquationButton extends StatelessWidget {
   final String btnText;
+  final Function callback;
 
-  const CalcBoxedEquationButton({required this.btnText});
+  const CalcBoxedEquationButton(
+      {required this.btnText,
+      required this.callback // non-nullable but optional with a default value
+      });
 
   @override
   Widget build(BuildContext context) {
@@ -63,7 +73,8 @@ class CalcBoxedEquationButton extends StatelessWidget {
 
     return GestureDetector(
       onTap: () {
-        print(btnText);
+        callback(btnText);
+        // print(btnText);
       },
       child: Container(
         // margin:
