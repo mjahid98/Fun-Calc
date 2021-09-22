@@ -47,9 +47,9 @@ class _FunCalcHomeState extends State<FunCalcHome> {
         }
         _expression += text;
       } else {
-        if (_history != '' && RegExp(r'^[0-9]+$').hasMatch(_expression)) {
-          _expression = '';
-        }
+        // if (_history != '' && RegExp(r'^[0-9]+$').hasMatch(_expression)) {
+        //   _expression = '';
+        // }
         _expression += text;
       }
       // print(btnIcon);
