@@ -82,6 +82,7 @@ class _FunCalcHomeState extends State<FunCalcHome> {
         Expression exp = p.parse(solver);
         ContextModel cm = ContextModel();
         double eval = exp.evaluate(EvaluationType.REAL, cm);
+        _history = _expression;
         eval.toString().endsWith('.0') || eval.toString().endsWith('.00')
             // ? _expression = eval.toString().substring(0, _expression.length - 2)
             ? _expression = eval.toString().replaceAll('.0', '')
