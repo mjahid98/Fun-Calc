@@ -1,3 +1,5 @@
+import 'dart:html';
+
 import 'package:flutter/material.dart';
 
 class CalcButton extends StatelessWidget {
@@ -31,18 +33,27 @@ class CalcButton extends StatelessWidget {
         top: 8,
         bottom: 8,
       ),
-      child: Container(
-        // margin:
-        height: 56,
-        width: 56,
-        decoration: BoxDecoration(
-            color: bgColor, borderRadius: BorderRadius.circular(25)),
-        child: Center(
-          child: Text(
-            btnText,
-            style: TextStyle(
-              color: textColor,
-              fontSize: 18,
+      child: GestureDetector(
+        onTap: () {
+          btnText == 'AC'
+              ? print('Cleared')
+              : btnText == '%'
+                  ? print('Percentage')
+                  : print(btnText);
+        },
+        child: Container(
+          // margin:
+          height: 56,
+          width: 56,
+          decoration: BoxDecoration(
+              color: bgColor, borderRadius: BorderRadius.circular(25)),
+          child: Center(
+            child: Text(
+              btnText,
+              style: TextStyle(
+                color: textColor,
+                fontSize: 18,
+              ),
             ),
           ),
         ),
@@ -79,15 +90,24 @@ class CalcIconButton extends StatelessWidget {
         top: 8,
         bottom: 8,
       ),
-      child: Container(
-        // margin:
-        height: 56,
-        width: 56,
-        decoration: BoxDecoration(
-            color: bgColor, borderRadius: BorderRadius.circular(25)),
-        child: Center(
-          child: Image.asset(
-            btnIcon,
+      child: GestureDetector(
+        onTap: () {
+          if (btnIcon == 'assets/images/backspace-icon.png') {
+            print('backspace');
+          } else {
+            print('square root');
+          }
+        },
+        child: Container(
+          // margin:
+          height: 56,
+          width: 56,
+          decoration: BoxDecoration(
+              color: bgColor, borderRadius: BorderRadius.circular(25)),
+          child: Center(
+            child: Image.asset(
+              btnIcon,
+            ),
           ),
         ),
       ),

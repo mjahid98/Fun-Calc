@@ -25,7 +25,6 @@ class FunCalcHome extends StatefulWidget {
   const FunCalcHome({Key? key, required this.title}) : super(key: key);
 
   final String title;
-
   @override
   State<FunCalcHome> createState() => _FunCalcHomeState();
 }
@@ -40,6 +39,9 @@ class _FunCalcHomeState extends State<FunCalcHome> {
     var lightPurple50 = Color(0x80DCBAFF);
     var deepLightPurple = Color(0x99361561);
     var deepPurple = Color(0xA1110F61);
+
+    final String lastCalculation = '';
+
 
     return Container(
       height: screenHeight,
@@ -72,7 +74,7 @@ class _FunCalcHomeState extends State<FunCalcHome> {
                 // ),
                 width: screenWidth,
                 child: Text(
-                  '40 + 20 × 3 ÷ 5 − 8',
+                  lastCalculation,
                   textAlign: TextAlign.end,
                   style: TextStyle(
                     color: lightPurple,
@@ -127,8 +129,9 @@ class _FunCalcHomeState extends State<FunCalcHome> {
                               textColor: lightPink,
                             ),
                             CalcIconButton(
-                                btnIcon: 'assets/images/backspace-icon.png',
-                                bgColor: deepLightPurple,),
+                              btnIcon: 'assets/images/backspace-icon.png',
+                              bgColor: deepLightPurple,
+                            ),
                           ],
                         ),
                         Row(
@@ -216,9 +219,18 @@ class _FunCalcHomeState extends State<FunCalcHome> {
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
                         CalcBoxedButton(btnText: '/'),
-                        CalcBoxedButton(btnText: 'x'),
-                        CalcBoxedButton(btnText: '-'),
-                        CalcBoxedButton(btnText: '+'),
+                        CalcBoxedButton(
+                          btnText: 'x',
+                          btnTextPaddingTop: 19,
+                        ),
+                        CalcBoxedButton(
+                          btnText: '-',
+                          btnTextPaddingTop: 22,
+                        ),
+                        CalcBoxedButton(
+                          btnText: '+',
+                          btnTextPaddingTop: 25,
+                        ),
                         CalcBoxedEquationButton(btnText: '=')
                       ],
                     )
